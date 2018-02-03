@@ -601,6 +601,8 @@ textarea {
       border-right: 1px solid #ccc; }
       .foot .foot_box ul p {
         margin-bottom: 30px; }
+        .foot .foot_box ul p span {
+          font-size: 24px; }
       .foot .foot_box ul li {
         margin-bottom: 20px; }
         .foot .foot_box ul li a {
@@ -619,11 +621,11 @@ textarea {
     color: #ccc; }
 
 @media (min-width: 1980px) {
-  .xr_head, .xr_main {
+  .xr_head, .xr_main, .foot {
     width: 1920px;
     margin: auto; } }
 @media (max-width: 1280px) {
-  .xr_head, .xr_main {
+  .xr_head, .xr_main, .foot {
     width: 1280px;
     margin: auto; } }
 
