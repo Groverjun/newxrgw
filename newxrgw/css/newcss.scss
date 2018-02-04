@@ -90,6 +90,7 @@ textarea {
             .nav{
                 position: relative;
                 >ul{
+                    position: relative;
                     li{
                         float: left;
                         margin-right: 30px;
@@ -129,6 +130,15 @@ textarea {
                         }
                     }
                     >li:last-child{margin-right: 0;}
+                    >#head_mune{
+                        position: absolute;
+                        width: 76px;
+                        height: 2px;
+                        background: #fff;
+                        bottom: -20px;
+                        z-index: 10;
+                        left: 0;
+                    }
                 }
             }
             .topB_R{
@@ -207,7 +217,7 @@ textarea {
         height: 90px;
         width: 100%;
         bottom: 0;
-        background: rgba(0,0,0,1);
+        background: rgba(0,0,0,0.5);
         .xrhead_bottomB{
             width: 1200px;
             margin: auto;
@@ -266,21 +276,23 @@ textarea {
                             color: #fff;
                             padding: 5px;
                             padding-top: 10px;
+                            background: rgba(0,0,0,0.8);
+                            
                         }
                         li:nth-child(1){
-                            background: #000;
+
                             transform:rotateX(90deg) translateZ(29px) ;
                         }
                         li:nth-child(2){
-                            background: #000;
+
                             transform: rotateX(180deg) translateZ(29px) ;
                         }
                         li:nth-child(3){
-                            background: #000;
+
                             transform: rotateX(270deg) translateZ(29px) ;
                         }
                         li:nth-child(4){
-                            background: #000;
+
                             transform:  rotateX(360deg) translateZ(29px) ;
                         }
                         

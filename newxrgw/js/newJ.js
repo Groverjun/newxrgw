@@ -6,6 +6,30 @@ $(".xrhead_banner").terseBanner({
 });
 
 window.onload=function(){
+
+/*滑动的菜单*/	
+
+var oUl=document.getElementById('navbox');
+var aLi=oUl.getElementsByTagName('li');
+var oBg=aLi[aLi.length-1];
+var i=0;
+
+for(i=0;i<aLi.length-1;i++)
+{
+	aLi[i].onmouseover=function ()
+	{
+		startMove(oBg, this.offsetLeft);
+	};
+	aLi[i].onmouseout=function ()
+	{
+		startMove(oBg, 0);
+	};
+}
+	
+	
+	
+	
+/*曝光数*/	
 	var sum=0;/*初始化曝光数*/
 	var allsum;/*当前的曝光数*/
 	var i=0;/*每秒的增长量*/
@@ -452,4 +476,74 @@ require(
 }
 function fun(t){
 	alert(0)
+}
+
+
+/**数字滚动*/
+var z=true
+$(function(){
+    var mainOffsetTop = $(".about_list").offset().top;
+    var mainHeight = $(".about_list").height();
+    var winHeight = $(window).height();
+    $(window).scroll(function(){
+        if(z==true){
+        	var winScrollTop = $(window).scrollTop();
+	        if(winScrollTop > mainOffsetTop + mainHeight || winScrollTop <　mainOffsetTop - winHeight){
+	        }else{
+	        	z=false
+	            var num1 = 30
+	            var num2 = 1000
+	            var num3 = 300
+	            var xr_1=$('#xr_1')
+	            var xr_2=$('#xr_2')
+	            var xr_3=$('#xr_3')
+	            countUp(xr_1, num1, 0, 1000,0);
+	            countUp(xr_2, num2, 0, 1000,0);
+	            countUp(xr_3, num3, 0, 1000,0);
+	            return false
+	        }
+        }
+    })
+});
+
+
+
+
+function countUp(elem, endVal, startVal, duration, decimal) {
+	var startTime = 0;
+	var dec = Math.pow(10, decimal);
+	var progress,value;
+	function startCount(timestamp) {
+		startTime = !startTime ? timestamp : startTime;
+		progress = timestamp - startTime;
+		value = startVal + (endVal - startVal) * (progress / duration);
+		value = (value > endVal) ? endVal : value;
+		value = Math.floor(value*dec) / dec;
+		elem.html(value.toFixed(decimal))
+		progress < duration && requestAnimationFrame(startCount)
+	}
+	requestAnimationFrame(startCount)
+}
+
+
+/**滑动的菜单**/
+var iSpeed=0;
+var left=0;
+function startMove(obj, iTarget)
+{
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function (){
+		iSpeed+=(iTarget-obj.offsetLeft)/5;
+		iSpeed*=0.7;
+		left+=iSpeed;
+		if(Math.abs(iSpeed)<1 && Math.abs(left-iTarget)<1)
+		{
+			clearInterval(obj.timer);
+			obj.style.left=iTarget+'px';
+		}
+		else
+		{
+			obj.style.left=left+'px';
+		}
+	}, 30);
 }
